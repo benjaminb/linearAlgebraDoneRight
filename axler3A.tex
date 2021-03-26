@@ -1,0 +1,50 @@
+\documentclass{scrartcl}
+\usepackage[T1]{fontenc}
+\usepackage{ntheorem}
+
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{graphicx}
+\usepackage{mathrsfs}
+\newcommand{\R}{\mathbb{R}}
+
+\newcommand*{\vertbar}{\rule[-1ex]{0.5pt}{2.5ex}}
+\newcommand*{\horzbar}{\rule[.5ex]{2.5ex}{0.5pt}}
+
+\begin{document}
+\title{Linear Algebra Done Right}
+\subtitle{Section 3A}
+\author{Selected solutions by Benjamin Basseri}
+\date{}
+\maketitle
+
+\begin{enumerate}
+	\item Suppose $b, c \in \R$. Define $T: \R^3 \rightarrow \R^2$ by 
+$$T(x, y, z) = (2x-4y+3z+b, 6x + cxyz)$$
+
+Show that $T$ is linear if and only if $b = c = 0$.
+
+\textbf{Solution.} For the forward proof, assume $T$ is linear. Suppose we have two vectors in $\R^3, \mathbf{x} = (x, y, z)$ and $\mathbf{x}' = (x', y', z')$. Then by definition of $T$ and vector addition:
+$$T(\mathbf{x} + \mathbf{x}') = T(x + x', y+y', z+z')$$
+$$ = (2(x+x') - 4(y+y') + 3(z+z') + b, 6(x+x')+c(x+x')(y+y')(z+z'))$$
+
+Since $T$ is linear, it is additive and we can also write $T(\mathbf{x} + \mathbf{x}')$ as:
+\begin{align*}
+	T(\mathbf{x} + \mathbf{x}') &= T(\mathbf{x}) + T(\mathbf{x}') &\text{linearity}\\
+	&=(2x - 4y + 3z + b, 6x + cxyz)&\\
+	& \quad  + (2x' - 4y' + 3z' + b, 6x' +cx'y'z')&\\
+	&= \left(2(x+x') - 4(y+y') + 3(z+z') + 2b, 6(x+x') + c(xyz + x'y'z')\right)&\\
+\end{align*}
+
+By matching coordinates, we have $2b = b \implies b = 0$. We must also have $c(x+x')(y+y')(z+z') = c(xyz + x'y'z')$ for all $\mathbf{x}, \mathbf{x}' \in \R^3$, which implies $c=0$.
+
+Since $T$ is linear it has homogeneity, so we can write:
+$$\lambda T(\mathbf{x}) = \lambda (2x-4y+3z+b, 6x + cxyz) = T(\lambda \mathbf{x})$$
+
+by distributivity of multiplication. 
+
+
+For the reverse direction, assume $b = c = 0$. Then from the expansion of $T(\mathbf{x} + \mathbf{x}')$ above we see that the surviving terms in both coordinates satisfy linearity.
+
+\end{enumerate}
+\end{document}
